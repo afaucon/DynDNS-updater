@@ -2,28 +2,12 @@ import os
 from setuptools import setup, find_packages
 
 
-package_name = "{{package_name}}"
-
-
-python_requires = "{{USER_CODE}}"
-# Justifications:
-#   {{USER_CODE}}
-
-
-dependency_links = {{USER_CODE}}
-# Justifications:
-#   {{USER_CODE}}
-
-
-install_requires = {{USER_CODE}}
-# Justifications:
-#   {{USER_CODE}}
+package_name = "dyndns_updater"
 
 
 entry_points = {
     'console_scripts': [
-        '{{package_name}} = {{package_name}}.__main__:{{package_name}}_cli',
-        {{USER_CODE}}
+        'duckdns = dyndns_updater.__main__:duckdns_cli'
     ],
     'gui_scripts': [
     ]
@@ -50,8 +34,5 @@ setup(
     packages=find_packages(),
     long_description=readme,
     long_description_content_type='text/markdown',
-    python_requires=python_requires,
-    dependency_links=dependency_links,
-    install_requires=install_requires,
     entry_points=entry_points,
 )

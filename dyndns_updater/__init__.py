@@ -8,4 +8,4 @@ from .__info__ import __license__
 from .__info__ import __copyright__
 
 
-from .api import service_1
+from .api import duckdns_update

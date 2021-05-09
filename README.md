@@ -1,6 +1,6 @@
-# Templated package
+# DynsDNS-updater
 
-Write a small description of the package.
+This package allows to update dynamic IP.
 
 ## Installation
 
@@ -9,7 +9,7 @@ Write a small description of the package.
 Install the package [from GitHub](https://pip.pypa.io/en/stable/reference/pip_install/#git).
 
 ```bash
-(venv) C:\Users\Adrien>pip install git+https://github.com/afaucon/templated_package.git@v0.0.1
+(venv) C:\Users\Adrien>pip install git+https://github.com/afaucon/DynDNS-updater.git@v0.0.1
 (venv) C:\Users\Adrien>pip list
 ```
 
@@ -18,8 +18,8 @@ Install the package [from GitHub](https://pip.pypa.io/en/stable/reference/pip_in
 Clone the package from GitHub and install it in editable mode (i.e. [setuptools "develop mode"](https://setuptools.readthedocs.io/en/latest/setuptools.html#development-mode)).
 
 ```bash
-(venv) C:\Users\Adrien>git clone git+https://github.com/afaucon/templated_package.git
-(venv) C:\Users\Adrien>pip install --editable templated_package
+(venv) C:\Users\Adrien>git clone git+https://github.com/afaucon/DynDNS-updater.git
+(venv) C:\Users\Adrien>pip install --editable DynDNS-updater
 (venv) C:\Users\Adrien>pip list
 ```
 
@@ -28,26 +28,26 @@ Clone the package from GitHub and install it in editable mode (i.e. [setuptools 
 Within a python module:
 
 ```python
-import templated_package
+import dyndns_updater
 
-templated_package.__author__
-templated_package.__version__
+dyndns_updater.__author__
+dyndns_updater.__version__
 ```
 
 ```python
-import templated_package.module
+from dyndns_updater import duckdns_update
 
-templated_package.service_1()
+ipv4, hasChanged = duckdns_update(yourdomain, yourtoken)
 ```
 
 With the command line interface:
 
 ```bash
-(venv) C:\Users\Adrien>python -m templated_package service_1
+(venv) C:\Users\Adrien>python -m dyndns_updater duckdns update yourdomain yourtoken
 ```
 
 Or directly:
 
 ```bash
-(venv) C:\Users\Adrien>templated_package service_1
+(venv) C:\Users\Adrien>duckdns update yourdomain yourtoken
 ```
