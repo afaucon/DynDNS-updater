@@ -10,7 +10,7 @@ install_requires=[
 
 entry_points = {
     'console_scripts': [
-        'duckdns = dyndns_updater.__main__:duckdns_cli'
+        'dyndns_updater = dyndns_updater.__main__:main_cli'
     ],
     'gui_scripts': [
     ]

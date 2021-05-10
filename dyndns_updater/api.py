@@ -3,9 +3,7 @@ import requests
 
 
 def duckdns_update(domain, token):
-
     # https://www.duckdns.org/spec.jsp
-
     url = 'https://duckdns.org/update/{}/{}'.format(domain, token)
     url = 'https://duckdns.org/update?domains={}&token={}&verbose=true'.format(domain, token)
     r = requests.get(url)

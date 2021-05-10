@@ -43,11 +43,11 @@ ipv4, hasChanged = duckdns_update(yourdomain, yourtoken)
 With the command line interface:
 
 ```bash
-(venv) C:\Users\Adrien>python -m dyndns_updater duckdns update yourdomain yourtoken
+(venv) C:\Users\Adrien>python -m dyndns_updater --platform duckdns update yourdomain yourtoken
 ```
 
 Or directly:
 
 ```bash
-(venv) C:\Users\Adrien>duckdns update yourdomain yourtoken
+(venv) C:\Users\Adrien>dyndns_updater --platform duckdns update yourdomain yourtoken
 ```
