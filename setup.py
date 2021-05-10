@@ -4,6 +4,9 @@ from setuptools import setup, find_packages
 
 package_name = "dyndns_updater"
 
+install_requires=[
+   'requests'
+]
 
 entry_points = {
     'console_scripts': [
@@ -35,4 +38,5 @@ setup(
     long_description=readme,
     long_description_content_type='text/markdown',
     entry_points=entry_points,
+    install_requires=install_requires
 )
