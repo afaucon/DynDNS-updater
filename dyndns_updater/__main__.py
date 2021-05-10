@@ -3,6 +3,7 @@ import argparse
 import dyndns_updater
 from dyndns_updater.api import duckdns_update
 
+import logging
 from pushbullet import PushBullet
 
 
@@ -17,15 +18,21 @@ def main_cli():
     parser.add_argument('--pushbullettoken', action='store', help='Access token to have full access to a Pushbullet account.')
 
     args = parser.parse_args()
-
     if args.command == 'update':
 
-        ipv4, hasChanged = duckdns_update(args.domain, args.token)
-        print(ipv4)
-        print('Updated' if hasChanged else 'No change')
+        if args.platform == 'duckdns':
+            ipv4, hasChanged = duckdns_update(args.domain, args.token)
 
-        if hasChanged and args.pushbullettoken is not None:
-            PushBullet(args.pushbullettoken).push_note('Home IP changed', 'New IP is: {}'.format(ipv4))
+            if hasChanged:
+                info_message = 'Current configured IP has changed. Verify the DNS at http://{}.duckdns.org/ ({})'.format(args.domain, ipv4)
+                logging.info(info_message)
+                if args.pushbullettoken is not None:
+                    PushBullet(args.pushbullettoken).push_note('DNS IP changed', info_message)
+            else:
+                info_message = 'Current configured IP hasn\'t changed. Verify the DNS at http://{}.duckdns.org/ ({})'.format(args.domain, ipv4)
+                logging.info(info_message)
 
 if __name__ == "__main__":
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.INFO)
     main_cli()
