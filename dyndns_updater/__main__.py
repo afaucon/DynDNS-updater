@@ -3,6 +3,8 @@ import argparse
 import dyndns_updater
 from dyndns_updater.api import duckdns_update
 
+from pushbullet import PushBullet
+
 
 def main_cli():
     parser = argparse.ArgumentParser(prog=dyndns_updater.__info__.__package_name__,
@@ -12,6 +14,7 @@ def main_cli():
     parser.add_argument('command', choices=['update'])
     parser.add_argument('domain')
     parser.add_argument('token')
+    parser.add_argument('--pushbullettoken', action='store', help='Access token to have full access to a Pushbullet account.')
 
     args = parser.parse_args()
 
@@ -21,6 +24,8 @@ def main_cli():
         print(ipv4)
         print('Updated' if hasChanged else 'No change')
 
+        if hasChanged and args.pushbullettoken is not None:
+            PushBullet(args.pushbullettoken).push_note('Home IP changed', 'New IP is: {}'.format(ipv4))
 
 if __name__ == "__main__":
     main_cli()

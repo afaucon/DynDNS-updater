@@ -5,7 +5,8 @@ from setuptools import setup, find_packages
 package_name = "dyndns_updater"
 
 install_requires=[
-   'requests'
+   'requests',
+   'pushbullet.py'
 ]
 
 entry_points = {
